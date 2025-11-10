@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<!-- saved from url=(0120)file:///C:/Users/tttt/CodeBuddy/20251106160058/EX3+022340613%E6%B1%AA%E6%98%8E%E6%A2%93_%E5%9B%BE%E5%BD%A2%E5%8C%96.html -->
+<html lang="zh-CN"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matplotlib练习 - EX3+022340613汪明梓</title>
+    <style>
+        body {
+            font-family: 'Microsoft YaHei', Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+        }
+        h2 {
+            color: #34495e;
+            border-left: 5px solid #e74c3c;
+            padding-left: 15px;
+            margin-top: 40px;
+        }
+        .exercise {
+            background: #ecf0f1;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            border-left: 4px solid #3498db;
+        }
+        .chart-container {
+            background: white;
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: 8px;
+            border: 2px solid #bdc3c7;
+            text-align: center;
+        }
+        .chart-title {
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+        .svg-container {
+            display: inline-block;
+            background: white;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .code {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 15px;
+            border-radius: 5px;
+            font-family: 'Courier New', monospace;
+            overflow-x: auto;
+            margin: 10px 0;
+        }
+        .description {
+            background: #d5dbdb;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 10px 0;
+        }
+        .requirements {
+            background: #f8f9fa;
+            padding: 15px;
+            border-left: 4px solid #27ae60;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Matplotlib练习 - EX3+022340613汪明梓</h1>
+        
+        <div class="description">
+            <p>本练习包含5个matplotlib绘图任务，涵盖了线型设置、填充区域、颜色映射、字体设置和主题风格切换等功能。</p>
+            <p><strong>注意：</strong>由于HTML是静态文件，无法直接运行Python代码。下面展示的是图形效果的模拟展示和完整的代码实现。</p>
+        </div>
+
+        <!-- 练习1：线型与颜色设置 -->
+        <div class="exercise">
+            <h2>1. 线型与颜色设置（4.3.2节实例2）</h2>
+            
+            <div class="requirements">
+                <h4>要求：</h4>
+                <ul>
+                    <li>使用2017年7月汇率数据：点划线、绿色、线宽1</li>
+                    <li>使用2019年7月汇率数据：长虚线、RGB(0.8,0.2,0.4)、线宽3</li>
+                    <li>添加图例以区分两条曲线</li>
+                </ul>
+            </div>
+
+            <div class="chart-container">
+                <div class="chart-title">汇率走势图 - 图形效果模拟</div>
+                <div class="svg-container">
+                    <svg width="600" height="400" viewBox="0 0 600 400">
+                        <!-- 坐标轴 -->
+                        <line x1="50" y1="50" x2="50" y2="350" stroke="black" stroke-width="2"></line>
+                        <line x1="50" y1="350" x2="550" y2="350" stroke="black" stroke-width="2"></line>
+                        
+                        <!-- 2017年数据点（绿色点划线） -->
+                        <polyline points="70,330 140,320 210,335 280,340 350,345 520,348" fill="none" stroke="green" stroke-width="1" stroke-dasharray="5,5"></polyline>
+                        
+                        <!-- 2019年数据点（紫色长虚线） -->
+                        <polyline points="70,200 140,180 210,190 280,175 350,185 520,170" fill="none" stroke="rgb(204,51,102)" stroke-width="3" stroke-dasharray="10,5"></polyline>
+                        
+                        <!-- 图例 -->
+                        <rect x="400" y="60" width="120" height="60" fill="white" stroke="gray" stroke-width="1"></rect>
+                        <line x1="410" y1="80" x2="440" y2="80" stroke="green" stroke-width="1" stroke-dasharray="5,5"></line>
+                        <text x="450" y="85" font-family="Arial" font-size="12">2017年7月</text>
+                        <line x1="410" y1="100" x2="440" y2="100" stroke="rgb(204,51,102)" stroke-width="3" stroke-dasharray="10,5"></line>
+                        <text x="450" y="105" font-family="Arial" font-size="12">2019年7月</text>
+                        
+                        <!-- 标题和标签 -->
+                        <text x="300" y="30" text-anchor="middle" font-family="Arial" font-size="16" font-weight="bold">2017年7月与2019年7月美元/人民币汇率走势图</text>
+                        <text x="300" y="380" text-anchor="middle" font-family="Arial" font-size="14">日期</text>
+                        <text x="20" y="200" text-anchor="middle" font-family="Arial" font-size="14" transform="rotate(-90,20,200)">汇率（人民币/美元）</text>
+                    </svg>
+                </div>
+            </div>
+
+            <div class="code">
+// 完整代码实现
+import matplotlib.pyplot as plt
+import numpy as np
+
+# 设置中文字体
+plt.rcParams['font.sans-serif'] = ['SimHei']
+plt.rcParams['axes.unicode_minus'] = False
+
+# 汇率数据
+dates_2017 = [3, 8, 13, 17, 25, 31]
+rates_2017 = [6.8007, 6.8060, 6.7835, 6.7700, 6.7511, 6.7265]
+dates_2019 = [3, 8, 13, 17, 25, 31]
+rates_2019 = [6.8640, 6.8881, 6.8662, 6.8827, 6.8737, 6.8841]
+
+plt.figure(figsize=(10, 6))
+plt.plot(dates_2017, rates_2017, linestyle='-.', color='g', linewidth=1, label='2017年7月')
+plt.plot(dates_2019, rates_2019, linestyle='--', color=(0.8, 0.2, 0.4), linewidth=3, label='2019年7月')
+plt.title('2017年7月与2019年7月美元/人民币汇率走势图')
+plt.xlabel('日期')
+plt.ylabel('汇率（人民币/美元）')
+plt.grid(True, linestyle=':', alpha=0.7)
+plt.legend()
+plt.tight_layout()
+plt.show()
+            </div>
+        </div>
+
+        <!-- 练习2：填充区域和数据标记 -->
+        <div class="exercise">
+            <h2>2. 填充区域和数据标记（4.4.2节实例3 &amp; 4.7.1节）</h2>
+            
+            <div class="requirements">
+                <h4>要求：</h4>
+                <ul>
+                    <li>绘制产品A和产品C的折线图，为两条折线添加圆形标记</li>
+                    <li>使用fill_between()填充两条曲线之间的区域</li>
+                    <li>填充颜色使用#ADD8E6（浅蓝色），透明度为0.3</li>
+                </ul>
+            </div>
+
+            <div class="chart-container">
+                <div class="chart-title">产品销售额对比图 - 图形效果模拟</div>
+                <div class="svg-container">
+                    <svg width="600" height="400" viewBox="0 0 600 400">
+                        <!-- 坐标轴 -->
+                        <line x1="50" y1="50" x2="50" y2="350" stroke="black" stroke-width="2"></line>
+                        <line x1="50" y1="350" x2="550" y2="350" stroke="black" stroke-width="2"></line>
+                        
+                        <!-- 填充区域 -->
+                        <polygon points="100,300 200,200 300,100 400,250 100,300" fill="#ADD8E6" fill-opacity="0.3" stroke="none"></polygon>
+                        
+                        <!-- 产品A折线（带圆形标记） -->
+                        <polyline points="100,300 200,200 300,100 400,250" fill="none" stroke="blue" stroke-width="2"></polyline>
+                        <circle cx="100" cy="300" r="5" fill="blue"></circle>
+                        <circle cx="200" cy="200" r="5" fill="blue"></circle>
+                        <circle cx="300" cy="100" r="5" fill="blue"></circle>
+                        <circle cx="400" cy="250" r="5" fill="blue"></circle>
+                        
+                        <!-- 产品C折线（带圆形标记） -->
+                        <polyline points="100,300 200,250 300,200 400,300" fill="none" stroke="red" stroke-width="2"></polyline>
+                        <circle cx="100" cy="300" r="5" fill="red"></circle>
+                        <circle cx="200" cy="250" r="5" fill="red"></circle>
+                        <circle cx="300" cy="200" r="5" fill="red"></circle>
+                        <circle cx="400" cy="300" r="5" fill="red"></circle>
+                        
+                        <!-- 季度标签 -->
+                        <text x="100" y="370" text-anchor="middle" font-family="Arial" font-size="12">第1季度</text>
+                        <text x="200" y="370" text-anchor="middle" font-family="Arial" font-size="12">第2季度</text>
+                        <text x="300" y="370" text-anchor="middle" font-family="Arial" font-size="12">第3季度</text>
+                        <text x="400" y="370" text-anchor="middle" font-family="Arial" font-size="12">第4季度</text>
+                        
+                        <!-- 图例 -->
+                        <rect x="400" y="60" width="120" height="60" fill="white" stroke="gray" stroke-width="1"></rect>
+                        <circle cx="410" cy="75" r="4" fill="blue"></circle>
+                        <text x="420" y="80" font-family="Arial" font-size="12">产品A</text>
+                        <circle cx="410" cy="95" r="4" fill="red"></circle>
+                        <text x="420" y="100" font-family="Arial" font-size="12">产品C</text>
+                        
+                        <!-- 标题 -->
+                        <text x="300" y="30" text-anchor="middle" font-family="Arial" font-size="16" font-weight="bold">产品A和产品C各季度销售额对比</text>
+                    </svg>
+                </div>
+            </div>
+
+            <div class="code">
+# 完整代码实现
+quarters = ['第1季度', '第2季度', '第3季度', '第4季度']
+product_a = [2144, 4617, 7674, 4409]
+product_c = [153, 1214, 2414, 680]
+
+plt.figure(figsize=(10, 6))
+plt.plot(quarters, product_a, marker='o', linewidth=2, label='产品A')
+plt.plot(quarters, product_c, marker='o', linewidth=2, label='产品C')
+plt.fill_between(quarters, product_a, product_c, facecolor='#ADD8E6', alpha=0.3, label='A-C区域')
+plt.title('产品A和产品C各季度销售额对比')
+plt.xlabel('季度')
+plt.ylabel('销售额（万元）')
+plt.grid(True, linestyle=':', alpha=0.7)
+plt.legend()
+plt.tight_layout()
+plt.show()
+            </div>
+        </div>
+
+        <!-- 练习3：颜色映射表 -->
+        <div class="exercise">
+            <h2>3. 使用颜色映射表（4.2.2节）</h2>
+            
+            <div class="requirements">
+                <h4>要求：</h4>
+                <ul>
+                    <li>生成50个随机的x轴和y轴数据点</li>
+                    <li>使用scatter()绘制散点图，设置颜色参数c为随机数组</li>
+                    <li>颜色映射表设置为'Blues'，标记大小为100</li>
+                    <li>添加颜色条显示颜色映射</li>
+                </ul>
+            </div>
+
+            <div class="chart-container">
+                <div class="chart-title">颜色映射散点图 - 图形效果模拟</div>
+                <div class="svg-container">
+                    <svg width="600" height="400" viewBox="0 0 600 400">
+                        <!-- 坐标轴 -->
+                        <line x1="50" y1="50" x2="50" y2="350" stroke="black" stroke-width="2"></line>
+                        <line x1="50" y1="350" x2="550" y2="350" stroke="black" stroke-width="2"></line>
+                        
+                        <!-- 散点（模拟不同颜色） -->
+                        <circle cx="100" cy="300" r="8" fill="#E1F5FE"></circle>
+                        <circle cx="150" cy="250" r="8" fill="#B3E5FC"></circle>
+                        <circle cx="200" cy="200" r="8" fill="#81D4FA"></circle>
+                        <circle cx="250" cy="150" r="8" fill="#4FC3F7"></circle>
+                        <circle cx="300" cy="100" r="8" fill="#29B6F6"></circle>
+                        <circle cx="350" cy="150" r="8" fill="#03A9F4"></circle>
+                        <circle cx="400" cy="200" r="8" fill="#0288D1"></circle>
+                        <circle cx="450" cy="250" r="8" fill="#01579B"></circle>
+                        <circle cx="500" cy="300" r="8" fill="#003f7f"></circle>
+                        
+                        <!-- 颜色条 -->
+                        <rect x="560" y="50" width="20" height="300" fill="url(#gradient)"></rect>
+                        <defs>
+                            <lineargradient id="gradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                                <stop offset="0%" style="stop-color:#003f7f;stop-opacity:1"></stop>
+                                <stop offset="100%" style="stop-color:#E1F5FE;stop-opacity:1"></stop>
+                            </lineargradient>
+                        </defs>
+                        
+                        <!-- 标题 -->
+                        <text x="300" y="30" text-anchor="middle" font-family="Arial" font-size="16" font-weight="bold">使用颜色映射表的散点图</text>
+                    </svg>
+                </div>
+            </div>
+
+            <div class="code">
+# 完整代码实现
+np.random.seed(42)
+x = np.random.rand(50)
+y = np.random.rand(50)
+colors = np.random.rand(50)
+
+plt.figure(figsize=(10, 6))
+scatter = plt.scatter(x, y, c=colors, cmap='Blues', s=100)
+plt.colorbar(scatter, label='颜色值')
+plt.title('使用颜色映射表的散点图')
+plt.xlabel('X轴')
+plt.ylabel('Y轴')
+plt.grid(True, linestyle=':', alpha=0.3)
+plt.tight_layout()
+plt.show()
+            </div>
+        </div>
+
+        <!-- 练习4：字体设置与数据标记属性 -->
+        <div class="exercise">
+            <h2>4. 字体设置与数据标记属性（4.5.1节实例4）</h2>
+            
+            <div class="requirements">
+                <h4>要求：</h4>
+                <ul>
+                    <li>最高温度曲线使用正三角标记，红边白底</li>
+                    <li>添加指向型注释，字体使用serif、粗体</li>
+                    <li>在最高温度曲线上标记最大值</li>
+                </ul>
+            </div>
+
+            <div class="chart-container">
+                <div class="chart-title">温度走势图 - 图形效果模拟</div>
+                <div class="svg-container">
+                    <svg width="600" height="400" viewBox="0 0 600 400">
+                        <!-- 坐标轴 -->
+                        <line x1="50" y1="50" x2="50" y2="350" stroke="black" stroke-width="2"></line>
+                        <line x1="50" y1="350" x2="550" y2="350" stroke="black" stroke-width="2"></line>
+                        
+                        <!-- 最高温度线（正三角标记） -->
+                        <polyline points="70,300 140,280 210,260 280,240 350,220 420,200 490,240 560,260" fill="none" stroke="blue" stroke-width="2"></polyline>
+                        <polygon points="350,220 345,215 355,215" fill="white" stroke="red" stroke-width="1"></polygon>
+                        
+                        <!-- 最低温度线 -->
+                        <polyline points="70,320 140,310 210,300 280,290 350,280 420,270 490,290 560,300" fill="none" stroke="red" stroke-width="2"></polyline>
+                        
+                        <!-- 注释箭头 -->
+                        <line x1="380" y1="180" x2="350" y2="220" stroke="red" stroke-width="2" marker-end="url(#arrowhead)"></line>
+                        <defs>
+                            <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+                                <polygon points="0 0, 10 3.5, 0 7" fill="red"></polygon>
+                            </marker>
+                        </defs>
+                        <text x="400" y="170" font-family="serif" font-weight="bold" font-size="14">最大气温</text>
+                        
+                        <!-- 标题 -->
+                        <text x="300" y="30" text-anchor="middle" font-family="Arial" font-size="16" font-weight="bold">温度走势图</text>
+                    </svg>
+                </div>
+            </div>
+
+            <div class="code">
+# 完整代码实现
+days = list(range(1, 11))
+max_temps = [28, 30, 32, 31, 34, 33, 29, 31, 30, 32]
+min_temps = [18, 20, 22, 21, 24, 23, 19, 21, 20, 22]
+
+plt.figure(figsize=(10, 6))
+plt.plot(days, max_temps, marker='^', mec='red', mfc='white', linewidth=2, label='最高温度')
+plt.plot(days, min_temps, marker='v', linewidth=2, label='最低温度')
+
+max_temp_day = 4  # 第5日（最大值34°C）
+max_temp = max_temps[max_temp_day]
+
+plt.annotate('最大气温',
+             xy=(days[max_temp_day], max_temp),
+             xytext=(days[max_temp_day] + 1, max_temp + 1),
+             arrowprops=dict(arrowstyle='-&gt;', color='red'),
+             fontfamily='serif',
+             fontweight='bold',
+             fontsize=12)
+
+plt.title('温度走势图')
+plt.xlabel('日期')
+plt.ylabel('温度（°C）')
+plt.grid(True, linestyle=':', alpha=0.7)
+plt.legend()
+plt.tight_layout()
+plt.show()
+            </div>
+        </div>
+
+        <!-- 练习5：切换主题风格 -->
+        <div class="exercise">
+            <h2>5. 切换主题风格（4.6节）</h2>
+            
+            <div class="requirements">
+                <h4>要求：</h4>
+                <ul>
+                    <li>使用plt.style.use()切换到'ggplot'主题风格</li>
+                    <li>绘制y=x²的曲线</li>
+                    <li>观察主题风格切换后的效果</li>
+                </ul>
+            </div>
+
+            <div class="chart-container">
+                <div class="chart-title">ggplot主题风格折线图 - 图形效果模拟</div>
+                <div class="svg-container">
+                    <svg width="600" height="400" viewBox="0 0 600 400" style="background-color: #f0f0f1;">
+                        <!-- ggplot风格背景 -->
+                        <rect x="50" y="50" width="500" height="300" fill="#f8f8f8" stroke="#dddddd" stroke-width="1"></rect>
+                        
+                        <!-- 网格线 -->
+                        <line x1="50" y1="100" x2="550" y2="100" stroke="#dddddd" stroke-width="1"></line>
+                        <line x1="50" y1="150" x2="550" y2="150" stroke="#dddddd" stroke-width="1"></line>
+                        <line x1="50" y1="200" x2="550" y2="200" stroke="#dddddd" stroke-width="1"></line>
+                        <line x1="50" y1="250" x2="550" y2="250" stroke="#dddddd" stroke-width="1"></line>
+                        <line x1="50" y1="300" x2="550" y2="300" stroke="#dddddd" stroke-width="1"></line>
+                        
+                        <!-- 曲线 y=x² -->
+                        <path d="M 50 350 Q 150 250 300 100 Q 450 250 550 350" fill="none" stroke="#3366CC" stroke-width="3"></path>
+                        
+                        <!-- 标题 -->
+                        <text x="300" y="30" text-anchor="middle" font-family="Arial" font-size="16" font-weight="bold" fill="#333333">使用ggplot主题风格的折线图</text>
+                    </svg>
+                </div>
+            </div>
+
+            <div class="code">
+# 完整代码实现
+plt.style.use('ggplot')
+
+x = np.linspace(-5, 5, 100)
+y = x**2
+
+plt.figure(figsize=(10, 6))
+plt.plot(x, y, linewidth=2)
+plt.title('使用ggplot主题风格的折线图')
+plt.xlabel('X轴')
+plt.ylabel('Y轴（X²）')
+plt.tight_layout()
+plt.show()
+            </div>
+        </div>
+
+        <div class="description">
+            <h3>文件说明</h3>
+            <p>要查看实际的图形效果，请运行 <code>EX3+022340613汪明梓.ipynb</code> 文件。</p>
+            <p>本HTML文件提供了图形效果的模拟展示和完整的代码实现说明。</p>
+        </div>
+    </div>
+
+</body></html>
